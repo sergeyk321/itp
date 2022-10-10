@@ -52,19 +52,19 @@ public class Task1 {
         System.out.println(abcmath(1, 2, 3));
 
     }
-        
+    // 1/10    
     public static int remainder(int firstNumb, int secondNumb) {
         return firstNumb % secondNumb;
     }
-
+    // 2/10
     public static int triArea(int base, int height) {
         return base * height / 2;
     }
-
+    // 3/10
     public static int animals(int chickens, int cows, int pigs) {
         return chickens * 2 + cows * 4 + pigs * 4; 
     }
-
+    // 4/10
     public static boolean profitableGamble(double prob, int prize, int pay) {
         if (prob * prize > pay) {
             return true;
@@ -72,7 +72,7 @@ public class Task1 {
             return false;
         }
     }
-
+    // 5/10
     public static String operation(int N, int a, int b) {
         String op = "none";
         if (a + b == N) {
@@ -89,11 +89,11 @@ public class Task1 {
         }
         return op;
     }
-
+    // 6/10
     public static int ctoa(char symbol) {
         return (int) symbol;
     }
-
+    // 7/10
     public static int addUpTo(int last) {
         int sum = 0;
             for (int i = 0; i <= last; i++) {
@@ -101,11 +101,11 @@ public class Task1 {
             }
         return sum;
     }
-
+    // 8/10
     public static int nextEdge(int First, int Second) {
         return First + Second - 1;
     }
-
+    // 9/10
     public static int sumOFCubes(int[] array) {
         int sum = 0;
         for (int index = 0; index < array.length; index++) {
@@ -113,7 +113,7 @@ public class Task1 {
         }
         return sum;
     }
-
+    // 10/10
     public static boolean abcmath(int a, int b, int c) {
         for (int i = 0; i < b; i++) {
             a += a;
