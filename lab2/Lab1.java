@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class Lab1 {
     public static void main(String[] args) {
-        System.out.println("Введите координаты первой точки через пробел");
+        System.out.println("Введите координаты первой точки");
         Scanner inp1 = new Scanner(System.in);
         int x1 = inp1.nextInt();
         int y1 = inp1.nextInt();
         int z1 = inp1.nextInt();
-        System.out.println("Введите координаты второй точки через пробел");
+        System.out.println("Введите координаты второй точки");
         Scanner inp2 = new Scanner(System.in);
         int x2 = inp2.nextInt();
         int y2 = inp2.nextInt();
         int z2 = inp2.nextInt();
-        System.out.println("Введите координаты третьей точки через пробел");
+        System.out.println("Введите координаты третьей точки");
         Scanner inp3 = new Scanner(System.in);
         int x3 = inp3.nextInt();
         int y3 = inp3.nextInt();
