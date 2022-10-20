@@ -96,7 +96,7 @@ public class Task1 {
     // 7/10
     public static int addUpTo(int last) {
         int sum = 0;
-            for (int i = 0; i <= last; i++) {
+            for (int i = 1; i <= last; i++) {
                 sum += i;
             }
         return sum;
