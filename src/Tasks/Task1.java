@@ -1,3 +1,4 @@
+package Tasks;
 public class Task1 {
     public static void main(String[] args) {
         System.out.println("Task 1/10");
@@ -50,6 +51,8 @@ public class Task1 {
         System.out.println(abcmath(42, 5, 10));
         System.out.println(abcmath(5, 2, 1));
         System.out.println(abcmath(1, 2, 3));
+
+        System.out.println("java".charAt(0));
 
     }
     // 1/10    
