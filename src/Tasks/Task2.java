@@ -22,8 +22,16 @@ public class Task2 {
         System.out.println(isAvgWhole(new int[] {9, 2, 2, 5}));
 
         System.out.println("Task 4/10");
-        int sumC [] = cumulativeSum(new int [] {1, 5, 9, 12});
-        for (int i : sumC)
+        int sum1 [] = cumulativeSum(new int [] {1, 2, 3});
+        int sum2 [] = cumulativeSum(new int [] {1, -2, 3});
+        int sum3 [] = cumulativeSum(new int [] {3, 3, -2, 408, 3, 3});
+        for (int i : sum1)
+            System.out.print(i + " ");
+        System.out.println();
+        for (int i : sum2)
+            System.out.print(i + " ");
+        System.out.println();
+        for (int i : sum3)
             System.out.print(i + " ");
         System.out.println();
 
@@ -55,10 +63,10 @@ public class Task2 {
         System.out.println(isPrefix("retrospect","sub-"));
         System.out.println(isSuffix("vocation","-logy"));
 
-        // System.out.println("Task 10/10");
-        // System.out.println(boxSeq(0));
-        // System.out.println(boxSeq(1));
-        // System.out.println(boxSeq(2));
+        System.out.println("Task 10/10");
+        System.out.println(boxSeq(0));
+        System.out.println(boxSeq(1));
+        System.out.println(boxSeq(2));
 
     }
     // 1/10
@@ -103,8 +111,7 @@ public class Task2 {
     }
     // 4/10
     public static int[] cumulativeSum(int[] array) {
-        int [] ans;
-        ans = new int[array.length];
+        int [] ans = new int[array.length];
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
             ans[i] = array[i] + sum;
@@ -172,6 +179,22 @@ public class Task2 {
     public static boolean isSuffix(String word, String suffix) {
         return word.endsWith(suffix.replace("-", ""));
     }
-}
 
     // 10/10
+    public static int boxSeq(int num) {
+        int res = 0;
+        if (num == 0) {
+            return 0;
+        }
+            for (int i = 1; i <= num; i++) {
+                if (i % 2 == 1) {
+                    res += 3;
+                }
+                else { 
+                    res -= 1;
+                }
+            }
+        return res;
+    }
+}
+
