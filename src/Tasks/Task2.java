@@ -5,8 +5,10 @@ import java.lang.Character;
 
 public class Task2 {
     public static void main(String[] args) {
-        /*System.out.println("Task 1/10");
-        System.out.println(repeat("mice", 5)) ;*/         
+        System.out.println("Task 1/10");
+        System.out.println(repeat("mice", 5)) ;
+        System.out.println(repeat("hello", 3));
+        System.out.println(repeat("stop", 1));         
         
         System.out.println("Task 2/10");
         System.out.println(differenceMaxMin(new int[] {10, 4, 1, 4, -10, -50, 32, 21}));
@@ -19,20 +21,21 @@ public class Task2 {
         System.out.println(isAvgWhole(new int[] {1, 1, 1}));
         System.out.println(isAvgWhole(new int[] {9, 2, 2, 5}));
 
-    /*     System.out.println("Task 4/10");
-        System.out.println(cumulativeSum(new int[] {1, 2, 3}));
-        System.out.println(cumulativeSum(new int[] {1, -2, 3}));
-        System.out.println(cumulativeSum(new int[] {3, 3, -2, 408, 3, 3})); */
+        System.out.println("Task 4/10");
+        int sumC [] = cumulativeSum(new int [] {1, 5, 9, 12});
+        for (int i : sumC)
+            System.out.print(i + " ");
+        System.out.println();
 
         System.out.println("Task 5/10");
         System.out.println(getDecimalPlaces("43.20"));
         System.out.println(getDecimalPlaces("400"));
         System.out.println(getDecimalPlaces("3.1"));
 
-        /*System.out.println("Task 6/10");
+        System.out.println("Task 6/10");
         System.out.println(Fibonacci(3));
         System.out.println(Fibonacci(7));
-        System.out.println(Fibonacci(12)); */
+        System.out.println(Fibonacci(12)); 
 
         System.out.println("Task 7/10");
         System.out.println(isValid("59001"));
@@ -47,15 +50,27 @@ public class Task2 {
         System.out.println(isStrangePair("", ""));
 
         System.out.println("Task 9/10");
+        System.out.println(isPrefix("automation","auto-"));
+        System.out.println(isSuffix("arachnophobia","-phobia"));
+        System.out.println(isPrefix("retrospect","sub-"));
+        System.out.println(isSuffix("vocation","-logy"));
 
-        System.out.println("Task 10/10");
+        // System.out.println("Task 10/10");
+        // System.out.println(boxSeq(0));
+        // System.out.println(boxSeq(1));
+        // System.out.println(boxSeq(2));
 
     }
     // 1/10
-    /* public static String repeat(String word, int count) {
+    public static String repeat(String word, int count) {
         String answer = "";
+        for (int i = 0; i < word.length(); i++ ) {
+            for (int j = 0; j < count; j++ ) {
+                answer += word.charAt(i);
+            }
+        }
     return answer;
-    } */
+    }
 
     // 2/10
     public static int differenceMaxMin(int[] array) {
@@ -87,15 +102,16 @@ public class Task2 {
         }
     }
     // 4/10
-    /*  public static int cumulativeSum(int[] array) {
-        int pred = 0;
-        int index = 0;
-        int[] newArray = new int[array.length];
-        for(index = 0; index < array.length; index++) {
-            newArray[index] = array[index];
-            }   
-    return newArray[index];
-    } */
+    public static int[] cumulativeSum(int[] array) {
+        int [] ans;
+        ans = new int[array.length];
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            ans[i] = array[i] + sum;
+            sum += array[i];
+        }
+        return ans;
+    } 
 
     // 5/10
     public static int getDecimalPlaces(String value) {
@@ -108,15 +124,15 @@ public class Task2 {
     }
 
     // 6/10
-    /*public static int Fibonacci(int number) {
-        long[] fib = new long[number];
-        fib[0] = 0;
-        fib[1] = 1;
-        for (int index = 2; index <= number; index++) {
-            fib[index] = fib[index - 1] + fib[index - 2];
+    public static int Fibonacci(int num) {
+        if (num <= 1) {
+           return 0;
+        } else if (num == 2) {
+           return 1;
+        } else {
+           return Fibonacci(num - 1) + Fibonacci(num - 2);
         }
-    return fib[number];
-    }*/
+    }
 
     // 7/10
     public static boolean isValid(String ind) {
@@ -126,8 +142,7 @@ public class Task2 {
                 symbol = ind.charAt(index);
                 if (symbol == ' '  || !Character.isDigit(symbol)) 
                     return false;
-            } 
-        
+            }
         return true;
         } else 
         return false;
@@ -138,25 +153,25 @@ public class Task2 {
         if ((word1 == "") && (word2 == "")) {
             return true;
         } else {
-            int n1 = word1.length();
-            int n2 = word2.length();
             char First1 = word1.charAt(0);
             char First2 = word2.charAt(0);
-            char Last1 = word1.charAt(n1 - 1);
-            char Last2 = word2.charAt(n2 - 1);
+            char Last1 = word1.charAt(word1.length() - 1);
+            char Last2 = word2.charAt(word2.length() - 1);
             if ((First1 == Last2) && (First2 == Last1)) {
                 return true;
             } else 
                 return false;
             }
     }
-    
 
     // 9/10
-    /*public static isPrefix(String word, String prefix-) {
-        int pr = word.length();
-        String prefix = 
+    public static boolean isPrefix(String word, String prefix) {
+        return word.startsWith(prefix.replace("-", ""));
     }
-    }*/
+
+    public static boolean isSuffix(String word, String suffix) {
+        return word.endsWith(suffix.replace("-", ""));
+    }
 }
 
+    // 10/10
