@@ -197,4 +197,3 @@ public class Task2 {
         return res;
     }
 }
-
