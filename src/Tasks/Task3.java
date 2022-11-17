@@ -33,6 +33,16 @@ public class Task3 {
         System.out.println(same(new int [] {1, 3, 4, 4, 4}, new int [] {2, 5, 7}));
         System.out.println(same(new int [] {9, 8, 7, 6}, new int [] {4, 4, 3, 1}));
 
+        System.out.println("Task 9/10");
+        System.out.println(nextPrime(12));
+        System.out.println(nextPrime(24));
+        System.out.println(nextPrime(11));
+
+        System.out.println("Task 10/10");
+        System.out.println(rightTriangle(3, 4, 5));
+        System.out.println(rightTriangle(145, 105, 100));
+        System.out.println(rightTriangle(70, 130, 110));
+
     }
     // 1/10
     public static int solutions(int a, int b, int c) {
@@ -93,8 +103,7 @@ public class Task3 {
     public static boolean isValidHexCode(String s) {
         if (!(s.length() == 7 && s.charAt(0) == '#'))
             return false;
-        int n = s.length();
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < s.length(); i++) {
             char c = s.charAt(i);
         if ((c < '0' || c > '9') && (c < 'A' || c > 'F'))
             return false;
@@ -129,5 +138,26 @@ public class Task3 {
         return true;
         else
         return false;
+    }
+    // 7/10
+    // 8/10
+    // 9/10
+    public static int nextPrime(int a) {
+        if (a < 3)
+            return 2;
+        while (!isPrime(a))
+            a++;
+        return a;
+    }
+    public static boolean isPrime(int x) {
+        for (int i = 2; i <= x/2; i++) {
+            if (x % i == 0)
+                return false;
+        }
+        return true;
+    }
+    // 10/10
+    public static boolean rightTriangle(int a, int b, int c) {
+        return a*a == b*b + c*c || b*b == a*a + c*c || c*c == a*a + b*b;
     }
 }
