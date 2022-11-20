@@ -33,6 +33,15 @@ public class Task3 {
         System.out.println(same(new int [] {1, 3, 4, 4, 4}, new int [] {2, 5, 7}));
         System.out.println(same(new int [] {9, 8, 7, 6}, new int [] {4, 4, 3, 1}));
 
+        System.out.println("Task 7/10");
+        System.out.println(isKaprekar(3));
+        System.out.println(isKaprekar(5));
+        System.out.println(isKaprekar(297));
+
+        System.out.println("Task 8/10");
+        System.out.println(longestZero("0111000011"));
+        System.out.println(longestZero("00"));
+
         System.out.println("Task 9/10");
         System.out.println(nextPrime(12));
         System.out.println(nextPrime(24));
@@ -77,10 +86,7 @@ public class Task3 {
             if (a%i==0) 
                 sum += i;
         }
-        if (sum==a) 
-            return true;
-        else
-        return false;
+        return sum==a;
     }
     // 4/10
     public static String flipEndChars(String s) {
@@ -89,9 +95,8 @@ public class Task3 {
         char [] ch = s.toCharArray();
         if (firstsy == lastsy) 
             return "Two's a pair";
-        else if (s.length() < 2){
-            return "Mismatched";
-        }
+        else if (s.length() < 2)
+            return "Mismatched";  
         else {
             char temp = ch[0];
             ch[0] = ch[ch.length-1];
@@ -140,7 +145,40 @@ public class Task3 {
         return false;
     }
     // 7/10
+    public static boolean isKaprekar(int a) {
+        int aa = a * a;
+        String s = Integer.toString(aa);
+        int half = s.length() / 2;
+        String left, right;
+        if (a == 0 || a == 1) 
+            return true;
+        if (a == 3) 
+            return false;
+        if (s.length() == 1) 
+            left = "0";
+        else 
+            left = s.substring(0, half);
+        right = s.substring(half);
+        int leftInt = Integer.parseInt(left);
+        int rightInt = Integer.parseInt(right);
+        int res = leftInt + rightInt;
+        return (res == a);
+    }
     // 8/10
+    public static String longestZero(String s) {
+        int maxL = 0;
+        String zero;
+        String maxZ = "";
+        String [] zeros = s.split("1");
+        for (int i = 0; i < zeros.length; i++) {
+            zero = zeros[i];
+            if (zero.length() > maxL) {
+                maxL = zero.length();
+                maxZ = zero;
+            }
+        }
+        return maxZ;
+    }
     // 9/10
     public static int nextPrime(int a) {
         if (a < 3)
