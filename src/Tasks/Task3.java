@@ -110,8 +110,8 @@ public class Task3 {
             return false;
         for (int i = 1; i < s.length(); i++) {
             char c = s.charAt(i);
-        if ((c < '0' || c > '9') && (c < 'A' || c > 'F'))
-            return false;
+            if ((c < '0' || c > '9') && (c < 'A' || c > 'F'))
+            return false;   
         }
         return true;
     }
@@ -139,10 +139,7 @@ public class Task3 {
                 }
             }
         }
-        if (unic1 - count1 == unic2 - count2) 
-        return true;
-        else
-        return false;
+        return (unic1 - count1 == unic2 - count2);
     }
     // 7/10
     public static boolean isKaprekar(int a) {
@@ -152,8 +149,6 @@ public class Task3 {
         String left, right;
         if (a == 0 || a == 1) 
             return true;
-        if (a == 3) 
-            return false;
         if (s.length() == 1) 
             left = "0";
         else 
@@ -167,14 +162,14 @@ public class Task3 {
     // 8/10
     public static String longestZero(String s) {
         int maxL = 0;
-        String zero;
+        String k;
         String maxZ = "";
         String [] zeros = s.split("1");
         for (int i = 0; i < zeros.length; i++) {
-            zero = zeros[i];
-            if (zero.length() > maxL) {
-                maxL = zero.length();
-                maxZ = zero;
+            k = zeros[i];
+            if (k.length() > maxL) {
+                maxL = k.length();
+                maxZ = k;
             }
         }
         return maxZ;
