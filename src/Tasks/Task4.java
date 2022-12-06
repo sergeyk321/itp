@@ -84,15 +84,17 @@ public class Task4 {
     // 3/10 
     public static String toCamelCase(String s){
         String k = "";
+        char b;
         boolean f = false;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '_')
+            b = s.charAt(i);
+            if (b == '_')
                 f = true;
             else if (f == true) {
-                k += Character.toUpperCase(s.charAt(i));
+                k += Character.toUpperCase(b);
                 f = false;    
             } else 
-                k += s.charAt(i);
+                k += b;
             }
         return k;
         }
@@ -131,7 +133,6 @@ public class Task4 {
             h = Double.parseDouble(height.substring(0, height.indexOf(" "))) *0.0254;
         else 
             h = Double.parseDouble(height.substring(0, height.indexOf(" ")));
-            System.out.println(h);
         double imt = Math.ceil(w/(h*h) * 10) / 10;
         if (imt >= 25)
             return Double.toString(imt) + " Overweight";
@@ -182,7 +183,7 @@ public class Task4 {
     }
     // 8/10
     public static boolean doesRhyme(String str1, String str2) {
-        String lets = "aeiouyAEIOUY";
+        String lets = "aeiouy";
         ArrayList<Character> list1 = new ArrayList<>();
         ArrayList<Character> list2 = new ArrayList<>();
         String [] arr1 = (str1.substring(0, str1.length()-1)).split(" ");
@@ -200,9 +201,13 @@ public class Task4 {
         Collections.sort(list1);
         Collections.sort(list2);
         if (list1.size() == list2.size()) 
-            return true;
+            for (int i = 0; i < list1.size(); i++) {
+                if (list1.get(i) != list2.get(i)) 
+                    return false;
+            }
         else 
             return false;
+        return true;
     }
     // 9/10
     public static boolean trouble(long a, long b) {
@@ -226,12 +231,12 @@ public class Task4 {
         String [] arr = s.split("[" + ch + "]");
         for (int i = 1; i < arr.length; i+=2) 
             str+=arr[i];
-            if (str.length() == 0) 
-                k = 0;
-            for (int i = 1; i < str.length(); i++) {
-                if (str.charAt(i-1) != str.charAt(i)) 
-                    k++;
+        if (str.length() == 0) 
+            k = 0;
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i-1) != str.charAt(i)) 
+                k++;
             }
-            return k;
+        return k;
     }
 }
