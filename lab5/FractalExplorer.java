@@ -2,7 +2,10 @@ package lab5;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.awt.event.*;
 
 public class FractalExplorer {
@@ -10,9 +13,11 @@ public class FractalExplorer {
 
     private static final String TITLE = "Fractal Explorer";
     private static final String RESET = "Reset Display";
+    private static final String SAVE = "Save Display"; // добавили кнопку сейв
     private JImageDisplay display; //объекты. для обновления отображения 
     private FractalGenerator fractal; //для отображения других фрактолов
     private Rectangle2D.Double range; //указывает диапозон комплексной плоскости
+    private JComboBox<FractalGenerator> comboBox;
 
     //ActionListener - для кнопки сброса
     /** используется нереализованный метод (класс интерфейс), который реализуется
@@ -25,6 +30,44 @@ public class FractalExplorer {
         }
     }
 
+    //Имплемент интерфейса ActionListener для кнопки сброса (a.l. - нереализованный метод, который реализуется)
+    class Handler implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            if (RESET.equals(command)){
+                fractal.getInitialRange(range);
+                drawFractal();
+            }
+            else if ("comboBoxChanged".equals(command)){
+                fractal = (FractalGenerator) comboBox.getSelectedItem(); //поддержка нескольких фракталов
+                fractal.getInitialRange(range);
+                drawFractal();
+            }
+            else if (SAVE.equals(command)){ //обработка сейв
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG Images", "png"); //сохранение только в пнг
+                chooser.setFileFilter(filter);
+                chooser.setAcceptAllFileFilterUsed(false); 
+                if (chooser.showSaveDialog(display)==JFileChooser.APPROVE_OPTION) { //открытие диалогового окна
+                    File file = chooser.getSelectedFile(); //настройки для файла
+                    String path = file.toString(); //путь
+                    if (path.length() == 0)
+                        return;
+                    if (!path.contains(".png"))
+                        file = new File(path+".png");
+                    try {
+                        javax.imageio.ImageIO.write(display.getImage(), "png", file); //записал изображение в файл
+                    }
+                    //обработка ошибок
+                    catch (Exception exception) {
+                        JOptionPane.showMessageDialog(display, exception.getMessage(), "Cannot save file", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+            }
+        }
+    }
+    
     class MouseHandler extends MouseAdapter { //создается подкласс от класса, который расширяется
         @Override
         public void mouseClicked(MouseEvent e) { // считывание координат мышки
@@ -57,12 +100,37 @@ public class FractalExplorer {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         display = new JImageDisplay(displaySize, displaySize);
         frame.add(display, BorderLayout.CENTER); //добавляем объект отображения
-        JButton resetButton = new JButton(RESET); // кнопка сброса
-        ResetButtonHandler resetButtonHandler = new ResetButtonHandler();
-        resetButton.addActionListener(resetButtonHandler);
+
+        Handler handler = new Handler();
+
+        //объявление панелей
+        JPanel top = new JPanel();
+        JPanel bottom = new JPanel();
+
+        JLabel label = new JLabel("Fractal: ");
+        top.add(label,BorderLayout.NORTH);
+
+        comboBox = new JComboBox<FractalGenerator>(); //окно сверху
+        comboBox.addItem(new Mandelbrot());
+        comboBox.addItem(new Tricorn());
+        comboBox.addItem(new BurningShip());
+        comboBox.addActionListener(handler); //добавили поддержку выпадающего списка
+        top.add(comboBox,BorderLayout.EAST);
+        
+        JButton saveButton = new JButton(SAVE); //кнопка сейв
+        saveButton.addActionListener(handler); 
+        bottom.add(saveButton,BorderLayout.WEST);
+
+        JButton resetButton = new JButton(RESET); //кнопка ресет
+        resetButton.addActionListener(handler);
+        bottom.add(resetButton, BorderLayout.EAST);
+
         MouseHandler click = new MouseHandler();
         display.addMouseListener(click);
-        frame.add(resetButton, BorderLayout.SOUTH); //кнопка в позиции
+
+        frame.add(bottom,BorderLayout.SOUTH);//рамка
+        frame.add(top,BorderLayout.NORTH);
+        
         frame.pack();
         frame.setVisible(true); //отрисовка элементов интерфейса
         frame.setResizable(false); //запрет на изменение размера экрана
@@ -89,4 +157,3 @@ public class FractalExplorer {
         }
     }
 }
-

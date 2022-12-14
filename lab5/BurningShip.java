@@ -2,8 +2,8 @@ package lab5;
 
 import java.awt.geom.Rectangle2D;
 
-//Класс фрактала множества мандельброта, наследуемый от генератора фракталов
-public class Mandelbrot extends FractalGenerator{
+//Класс фрактала множества BurningShip, наследуемый от генератора фракталов
+public class BurningShip extends FractalGenerator{
     //Константа с максимальным количеством итераций
     public static final int MAX_ITERATIONS = 2000;
 
@@ -27,8 +27,8 @@ public class Mandelbrot extends FractalGenerator{
         double zIm2 = 0;
         while(iteration < MAX_ITERATIONS && (zRe2 + zIm2) < 4)
         {
-            zIm = (2 * zRe * zIm) + y; //считается мнимая часть числа
-            zRe = (zRe2 - zIm2) + x; //считается действ. часть числа
+            zIm = Math.abs(2 * zRe * zIm) + y; //считается мнимая часть числа
+            zRe = (zRe2 - zIm2) + x;//считается действ. часть числа
 
             zRe2 = zRe*zRe;
             zIm2 = zIm*zIm;
@@ -39,7 +39,7 @@ public class Mandelbrot extends FractalGenerator{
         }
         return iteration;
     }
-    public String toString() { //выпадающий список
-        return "Mandelbrot";
+    public String toString() {
+        return "BurningShip";
     }
 }
