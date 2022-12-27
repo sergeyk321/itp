@@ -27,8 +27,8 @@ public class Task1 {
         System.out.println(operation(15, 11, 11));
 
         System.out.println("Task 6/10");
-        System.out.println(ctoa('A'));
-        System.out.println(ctoa('m'));
+        System.out.println(ctoa('1'));
+        System.out.println(ctoa('я'));
         System.out.println(ctoa('['));
         System.out.println(ctoa('\\'));
 
