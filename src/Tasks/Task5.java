@@ -341,7 +341,6 @@ public class Task5 {
             num = 3 * i * (i - 1) + 1; //является ли шестиугольником
         }
         int k = i; //сколько в первой и последней строках
-        System.out.println(i);
         if (n != num)
             res = "invalid";
         while (k < i * 2 - 1) { //до середины
