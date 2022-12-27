@@ -25,8 +25,8 @@ public class Task4 {
         System.out.println(bugger(39));
         System.out.println(bugger(999));
         System.out.println("Task 7/10");
-        System.out.println(toStarShorthand("abbccc"));
-        System.out.println(toStarShorthand("77777geff"));   
+        //System.out.println(toStarShorthand("abbccc"));
+        //System.out.println(toStarShorthand("77777geff"));   
         System.out.println(toStarShorthand("abc"));
         System.out.println("Task 8/10");
         System.out.println(doesRhyme("Sam I am!", "Green eggs and ham."));
@@ -171,6 +171,7 @@ public class Task4 {
                     str += x + "*" + k;
                 k = 1;
                 x = s.charAt(i);
+                System.out.println(x);
             }
             else
                 k++;
