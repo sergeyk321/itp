@@ -42,7 +42,7 @@ public class AStarState
      **/
     public Waypoint getMinOpenWaypoint()
     {
-        // TODO:  Implement. 
+        //  
         Waypoint minWaypoint = null; // поиск вершины с наименьшей стоимостью 
         float minValue = Float.MAX_VALUE;
         for (Entry<Location, Waypoint> wpmin : openedVertex.entrySet()) {
@@ -66,7 +66,7 @@ public class AStarState
      **/
     public boolean addOpenWaypoint(Waypoint newWP)
     {
-        // TODO:  Implement.
+        // 
         Waypoint compare = openedVertex.get(newWP.getLocation()); //добавление вершины, если она лучше прошлой
         if (compare == null) {
             openedVertex.put(newWP.getLocation(), newWP); //если равно 0, то заменяем на новое значение
@@ -82,7 +82,7 @@ public class AStarState
     /** Returns the current number of open waypoints. **/
     public int numOpenWaypoints()
     {
-        // TODO:  Implement.
+        // 
         return openedVertex.size(); //кол-во открытых точек
     }
 
@@ -93,7 +93,7 @@ public class AStarState
      **/
     public void closeWaypoint(Location loc)
     {
-        // TODO:  Implement.
+        // 
         openedVertex.remove(loc);
         closedVertex.put(loc, openedVertex.get(loc)); //добавляем в набор закрытых вершин
 
@@ -105,7 +105,7 @@ public class AStarState
      **/
     public boolean isLocationClosed(Location loc)
     {
-        // TODO:  Implement.
+        // 
 
         return closedVertex.containsKey(loc); //Если местоположение встречается в наборе
     }
