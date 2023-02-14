@@ -1,8 +1,7 @@
 public class Palindrome {
     public static void main(String[] args) {
         for(int i = 0; i < args.length; i++) {
-            String s = args[i]; // значения вписываем в конце команды
-            //boolean isPalindrome = s.equals(reverseString(s));
+            String s = args[i];
             System.out.println(s + " " + is(s));
         }
     }
@@ -10,7 +9,7 @@ public class Palindrome {
         String rev = "";
         for(int i = s.length() - 1; i >= 0; i--) 
             rev += s.charAt(i);
-        return rev; // цикл закончен, возвращаем результат в reverseString
+        return rev;
     }
     public static boolean is(String s) {
         return(reverseString(s).equals(s));
