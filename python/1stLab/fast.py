@@ -14,7 +14,7 @@ for k in range(user_m):
     arr.append(irr)
 
 def fast_sort(arr):
-    if len(arr) > 0: #без этого list out of range
+    if len(arr) > 0:
         k = arr[len(arr) // 2]
         low = []
         mid = []

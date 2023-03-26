@@ -13,18 +13,16 @@ for k in range(user_m):
         irr.append(random.randint(user_min_limit, user_max_limit))
     arr.append(irr)
 
+
 n = len(arr)
-def shell_sort(arr):
-    p = n // 2
-    while p > 0:
-        for i in range(p, n): 
-            k = arr[i] #текущее значение
-            while i >= p and arr[i - p] > k:
-                arr[i] = arr[i - p] #меняем местами
-                i -= p
-                arr[i] = k
-        p //= 2
+def selection_sort(arr):
+    for i in range(n):
+        id = i
+        for j in range(i + 1, n):
+            if arr[id] > arr[j]:
+                id = j
+        arr[id], arr[i] = arr[i], arr[id]
     return arr
-    
+
 for i in arr:
-    print(shell_sort(i))
+  print(selection_sort(i))

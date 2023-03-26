@@ -34,8 +34,8 @@ public class FractalExplorer {
                 fractal.getInitialRange(range);
                 drawFractal();
             } else if (command.equals(COMBOBOX_CHANGE)) {
-                JComboBox source = (JComboBox) e.getSource();;
-                fractal = (FractalGenerator) source.getSelectedItem();
+                //JComboBox source = (JComboBox) e.getSource();;
+                //fractal = (FractalGenerator) source.getSelectedItem();
                 fractal.getInitialRange(range);
                 display.clearImage();
                 drawFractal();

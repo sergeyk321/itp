@@ -13,13 +13,16 @@ for k in range(user_m):
         irr.append(random.randint(user_min_limit, user_max_limit))
     arr.append(irr)
 
+print(arr)
 n = len(arr)
-def bubble_sort(arr):
-    for i in range(n - 1): #заходим в один элемент массива
-        for j in range(n - i - 1): #проходим по каждому значению этого элемента
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+def ins_sort(arr):
+    for i in range(1, n):
+        k = arr[i] #текущее значение
+        j = i
+        while j > 0 and arr[j - 1] > k: #предыдущий элемент больше текущего значения
+            arr[j], arr[j - 1] = arr[j - 1], arr[j] #меняем местами
+            j -= 1
     return arr
-
+    
 for i in arr:
-    print(bubble_sort(i))
+    print(ins_sort(i))

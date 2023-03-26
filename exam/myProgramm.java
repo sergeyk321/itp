@@ -6,8 +6,10 @@ class MyProgram {
         double a = s.nextDouble();
         double b = s.nextDouble();
         double c = s.nextDouble();
+        s.close();
         double su = b * (-1) / a;
         double pr = c / a;
         System.out.println(su + " " + pr);
+
     }
 }
