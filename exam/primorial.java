@@ -1,6 +1,6 @@
 public class primorial { //ПРИМОРИАЛ
     public static void main(String[] args) {
-        System.out.println(exam(8));
+        System.out.println(exam(3));
     }
     public static int exam(int s) {
         int ans = 1;

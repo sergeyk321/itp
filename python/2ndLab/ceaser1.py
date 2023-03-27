@@ -5,16 +5,16 @@ class Deque:
     def isEmpty(self):
         return self.items == []
 
-    def addRear(self, item):
+    def addRear(self, item): #+последний
         self.items.append(item)
 
-    def addFront(self, item):
+    def addFront(self, item):#+первый
         self.items.insert(0, item)
 
-    def removeFront(self):
+    def removeFront(self):#-последний
         return self.items.pop()
 
-    def removeRear(self):
+    def removeRear(self):#-первый
         return self.items.pop(0)
 
     def size(self):
@@ -24,23 +24,22 @@ Ceaser = open("ceaser.txt", "r", encoding = "utf8")
 s = Ceaser.read()
 a='абвгдежзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
 
-cypher = Deque()
+deq = Deque()
 for i in a:
-    cypher.addRear(i)
+    deq.addRear(i) #A
 
 def enc(let):
-    for i in range(cypher.size()):
-        t = cypher.removeRear()
+    for i in range(deq.size()):
+        t = deq.removeRear() #опустошаем до тех пор пока t != let(i)
         if t == let:
-            cypher.addRear(t)
-            val = cypher.removeRear()
-            val = cypher.removeRear()
-            cypher.addRear(val)
+            deq.addRear(t) 
+            val = deq.removeRear() #+1
+            val = deq.removeRear() #+2
+            deq.addRear(val) 
             return val
-        cypher.addRear(t)
+        deq.addRear(t) #загоняем в конец дека
 
-encrMes = ""
+ans = ""
 for i in s:
-    if encLet := enc(i):
-        encrMes += encLet
-print(encrMes)
+    ans += enc(i)
+print(ans)

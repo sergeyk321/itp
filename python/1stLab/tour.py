@@ -15,19 +15,19 @@ for k in range(user_m):
 
 print(arr)    
 
-n = len(arr)
-def tour_sort(arr):
-    w = []
-    l = []
-    res = []
-    arr2 = [7, 4, 10, 9, 2, 1, 6]
-    k = len(arr2)
-    #heap = [4, 7, 10, 9]
-    heap = []
-    tree_size = n // 2 + 1
-    for i in range(tree_size):
-        heap.append(arr2[i])
-    for j in range(1, k):
+# n = len(arr)
+# def tour_sort(arr):
+#     w = []
+#     l = []
+#     res = []
+#     arr2 = [7, 4, 10, 9, 2, 1, 6]
+#     k = len(arr2)
+#     #heap = [4, 7, 10, 9]
+#     heap = []
+#     tree_size = n // 2 + 1
+#     for i in range(tree_size):
+#         heap.append(arr2[i])
+#     for j in range(1, k):
         
 #max heap
 #l = 2 * i + 1
@@ -35,7 +35,7 @@ def tour_sort(arr):
 #arr[0] = max
 
 
-    return 
+    #return 
 
-for i in arr:
-    print(tour_sort(i))
+    # for i in arr:
+    #     print(tour_sort(i))

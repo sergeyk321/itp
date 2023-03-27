@@ -2,7 +2,7 @@ import java.util.ArrayList; //СТРОКА С ЧИСЛАМИ
 
 public class numInStr {
     public static void main(String[] args) {
-        System.out.println(exam(new String [] {"abc", "12345"}));
+        System.out.println(exam(new String [] {""}));
     }
     public static ArrayList<String> exam(String [] s) {
         String numbers = "0123456789";
